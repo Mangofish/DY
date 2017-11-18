@@ -11,13 +11,17 @@
 		182F616D1FBEB0DC009F4F01 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 182F616C1FBEB0DC009F4F01 /* Assets.xcassets */; };
 		182F61701FBEB0DC009F4F01 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 182F616E1FBEB0DC009F4F01 /* LaunchScreen.storyboard */; };
 		182F617B1FBEB0DC009F4F01 /* DYTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 182F617A1FBEB0DC009F4F01 /* DYTests.swift */; };
-		182F61861FBEB0DC009F4F01 /* DYUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 182F61851FBEB0DC009F4F01 /* DYUITests.swift */; };
 		182F619E1FBED5ED009F4F01 /* Live.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 182F619D1FBED5ED009F4F01 /* Live.storyboard */; };
 		182F61A11FBED606009F4F01 /* Follow.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 182F619F1FBED606009F4F01 /* Follow.storyboard */; };
 		182F61A31FBED627009F4F01 /* Mine.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 182F61A21FBED627009F4F01 /* Mine.storyboard */; };
 		187AF04F1FBFD9B8003825BB /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 187AF04E1FBFD9B8003825BB /* MainViewController.swift */; };
 		187AF0551FBFDC2D003825BB /* Home.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 187AF0531FBFDC2D003825BB /* Home.storyboard */; };
 		187AF05B1FBFDCFB003825BB /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 187AF0591FBFDCFB003825BB /* Main.storyboard */; };
+		187AF05C1FBFE2E3003825BB /* DYUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 182F61851FBEB0DC009F4F01 /* DYUITests.swift */; };
+		187AF05E1FBFE591003825BB /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 187AF05D1FBFE591003825BB /* HomeViewController.swift */; };
+		187AF0611FC004DB003825BB /* UIBarButtonItem-Extention.swift in Sources */ = {isa = PBXBuildFile; fileRef = 187AF0601FC004DB003825BB /* UIBarButtonItem-Extention.swift */; };
+		187AF0631FC012E8003825BB /* PageTitleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 187AF0621FC012E8003825BB /* PageTitleView.swift */; };
+		187AF0651FC0153A003825BB /* Common.swift in Sources */ = {isa = PBXBuildFile; fileRef = 187AF0641FC0153A003825BB /* Common.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -55,6 +59,10 @@
 		187AF04E1FBFD9B8003825BB /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		187AF0541FBFDC2D003825BB /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = DY/Base.lproj/Home.storyboard; sourceTree = "<group>"; };
 		187AF05A1FBFDCFB003825BB /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		187AF05D1FBFE591003825BB /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
+		187AF0601FC004DB003825BB /* UIBarButtonItem-Extention.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIBarButtonItem-Extention.swift"; sourceTree = "<group>"; };
+		187AF0621FC012E8003825BB /* PageTitleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PageTitleView.swift; sourceTree = "<group>"; };
+		187AF0641FC0153A003825BB /* Common.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Common.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -119,6 +127,7 @@
 			isa = PBXGroup;
 			children = (
 				182F617A1FBEB0DC009F4F01 /* DYTests.swift */,
+				182F61851FBEB0DC009F4F01 /* DYUITests.swift */,
 				182F617C1FBEB0DC009F4F01 /* Info.plist */,
 			);
 			path = DYTests;
@@ -127,7 +136,6 @@
 		182F61841FBEB0DC009F4F01 /* DYUITests */ = {
 			isa = PBXGroup;
 			children = (
-				182F61851FBEB0DC009F4F01 /* DYUITests.swift */,
 				182F61871FBEB0DC009F4F01 /* Info.plist */,
 			);
 			path = DYUITests;
@@ -136,6 +144,7 @@
 		182F61931FBEB5FC009F4F01 /* Tools */ = {
 			isa = PBXGroup;
 			children = (
+				187AF0641FC0153A003825BB /* Common.swift */,
 			);
 			path = Tools;
 			sourceTree = "<group>";
@@ -143,6 +152,7 @@
 		182F61941FBEB66A009F4F01 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
+				187AF05F1FC004A3003825BB /* Extension */,
 				182F61951FBEB66A009F4F01 /* Follow */,
 				182F61961FBEB66A009F4F01 /* Home */,
 				182F61971FBEB66A009F4F01 /* Live */,
@@ -199,6 +209,7 @@
 		187AF0501FBFDBC3003825BB /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				187AF05D1FBFE591003825BB /* HomeViewController.swift */,
 				187AF0531FBFDC2D003825BB /* Home.storyboard */,
 			);
 			path = Controller;
@@ -214,6 +225,7 @@
 		187AF0521FBFDBC3003825BB /* View */ = {
 			isa = PBXGroup;
 			children = (
+				187AF0621FC012E8003825BB /* PageTitleView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -239,6 +251,14 @@
 				187AF0591FBFDCFB003825BB /* Main.storyboard */,
 			);
 			path = Controller;
+			sourceTree = "<group>";
+		};
+		187AF05F1FC004A3003825BB /* Extension */ = {
+			isa = PBXGroup;
+			children = (
+				187AF0601FC004DB003825BB /* UIBarButtonItem-Extention.swift */,
+			);
+			path = Extension;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -381,6 +401,10 @@
 			files = (
 				182F61661FBEB0DC009F4F01 /* AppDelegate.swift in Sources */,
 				187AF04F1FBFD9B8003825BB /* MainViewController.swift in Sources */,
+				187AF0631FC012E8003825BB /* PageTitleView.swift in Sources */,
+				187AF05E1FBFE591003825BB /* HomeViewController.swift in Sources */,
+				187AF0651FC0153A003825BB /* Common.swift in Sources */,
+				187AF0611FC004DB003825BB /* UIBarButtonItem-Extention.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -388,6 +412,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				187AF05C1FBFE2E3003825BB /* DYUITests.swift in Sources */,
 				182F617B1FBEB0DC009F4F01 /* DYTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -396,7 +421,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				182F61861FBEB0DC009F4F01 /* DYUITests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
