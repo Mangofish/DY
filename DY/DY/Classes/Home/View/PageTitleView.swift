@@ -8,24 +8,42 @@
 
 import UIKit
 
+let kScrollH : CGFloat = 0.5
+
+
 class PageTitleView: UIView {
 
 //    定义属性
     private var titles :[String]
+//    数组需要初始化
+    private var labelAry : [UILabel] = []
     
+//  滚动ScrollView
     private var scrollView : UIScrollView = {
         
         let scrollView = UIScrollView.init()
         scrollView.showsVerticalScrollIndicator = false
         scrollView.showsHorizontalScrollIndicator = false
+        
         return scrollView
         
     }()
+    
+//    滚动底部Line
+    private var scrollLine : UIView = {
+        
+        let scrollLine = UIView.init()
+        scrollLine.backgroundColor = UIColor.orange
+        
+        return scrollLine
+    }()
+    
 //    初始化构造函数
     init(frame: CGRect, titles : [String]) {
         
         self.titles = titles
         super.init(frame: frame)
+//        设置UI
         self.setUpUI()
         
     }
@@ -40,17 +58,32 @@ extension PageTitleView {
     
     private func setUpUI( ){
         
+//        1.添加scrollview
         addSubview(scrollView)
         scrollView.frame = bounds
+//        2.添加标题
+        setUpTitleLables()
+//        添加底线
+        setUpTitleLine()
         
+        if #available(iOS 11.0, *) {
+            scrollView.contentInsetAdjustmentBehavior = .never
+        } else {
+            
+        }
     }
     
     private func setUpTitleLables() {
 //        既要位置，又要内容
+        
+        let labW :CGFloat = frame.width/CGFloat(titles.count)
+        let labH :CGFloat = frame.height - kScrollH
+        let labY :CGFloat = 0
+        scrollView.contentSize = CGSize.init(width: Int(labW) * titles.count, height: 40)
+        
         for (index, title) in titles.enumerated() {
             
             let lab = UILabel.init()
-            
 //            样式设置
             lab.text = title
             lab.tag = index
@@ -58,13 +91,28 @@ extension PageTitleView {
             lab.textColor = UIColor.darkGray
             lab.textAlignment = .center
             
-            let labW :CGFloat = 0
-            let labH :CGFloat = 0
-            let labX :CGFloat = 0
-            let labY :CGFloat = 0
+//            位置
+            let labX :CGFloat = labW * CGFloat(index)
+            lab.frame = CGRect.init(x: labX, y: labY, width: labW, height: labH)
+            scrollView.addSubview(lab)
+            labelAry.append(lab)
             
         }
         
+    }
+    
+    private func setUpTitleLine() {
+        
+//        设置位置
+//        1.获取label
+        guard let firstLabel = labelAry.first else {
+            return
+        }
+        
+        //       添加scrollLine
+        scrollView.addSubview(scrollLine)
+        scrollLine.frame = CGRect.init(x: firstLabel.frame.origin.x, y: frame.height-kScrollH, width: firstLabel.frame.size.width, height: kScrollH)
+        firstLabel.textColor = UIColor.orange
     }
     
 }
