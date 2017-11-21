@@ -15,6 +15,7 @@
 		182F61A11FBED606009F4F01 /* Follow.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 182F619F1FBED606009F4F01 /* Follow.storyboard */; };
 		182F61A31FBED627009F4F01 /* Mine.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 182F61A21FBED627009F4F01 /* Mine.storyboard */; };
 		1858409A1FC2CB98005CC252 /* ContentScrollView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 185840991FC2CB98005CC252 /* ContentScrollView.swift */; };
+		185D39171FC3F4B500132B33 /* UIColor+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 185D39161FC3F4B500132B33 /* UIColor+Extension.swift */; };
 		187AF04F1FBFD9B8003825BB /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 187AF04E1FBFD9B8003825BB /* MainViewController.swift */; };
 		187AF0551FBFDC2D003825BB /* Home.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 187AF0531FBFDC2D003825BB /* Home.storyboard */; };
 		187AF05B1FBFDCFB003825BB /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 187AF0591FBFDCFB003825BB /* Main.storyboard */; };
@@ -58,6 +59,7 @@
 		182F61A01FBED606009F4F01 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = DY/Base.lproj/Follow.storyboard; sourceTree = "<group>"; };
 		182F61A21FBED627009F4F01 /* Mine.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Mine.storyboard; sourceTree = "<group>"; };
 		185840991FC2CB98005CC252 /* ContentScrollView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentScrollView.swift; sourceTree = "<group>"; };
+		185D39161FC3F4B500132B33 /* UIColor+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Extension.swift"; sourceTree = "<group>"; };
 		187AF04E1FBFD9B8003825BB /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		187AF0541FBFDC2D003825BB /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = DY/Base.lproj/Home.storyboard; sourceTree = "<group>"; };
 		187AF05A1FBFDCFB003825BB /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -260,6 +262,7 @@
 			isa = PBXGroup;
 			children = (
 				187AF0601FC004DB003825BB /* UIBarButtonItem-Extention.swift */,
+				185D39161FC3F4B500132B33 /* UIColor+Extension.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -409,6 +412,7 @@
 				187AF0651FC0153A003825BB /* Common.swift in Sources */,
 				1858409A1FC2CB98005CC252 /* ContentScrollView.swift in Sources */,
 				187AF0611FC004DB003825BB /* UIBarButtonItem-Extention.swift in Sources */,
+				185D39171FC3F4B500132B33 /* UIColor+Extension.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

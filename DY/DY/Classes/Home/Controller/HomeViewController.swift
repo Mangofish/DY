@@ -22,6 +22,22 @@ class HomeViewController: UIViewController {
         return titleView
     }()
     
+    lazy var pageContentView : ContentScrollView = {
+        
+        let frame = CGRect.init(x: 0, y: kNavHeight+40+kItemBarHeight, width: kScreenWidth, height: kScreenHeight-kNavHeight-44-kTitleViewH-kItemBarHeight)
+//        四个控制器
+        var childVcs :[UIViewController] = []
+        for _ in 0..<4{
+            let vc = UIViewController.init()
+            childVcs.append(vc)
+//            没有隐式转换
+            vc.view.backgroundColor = UIColor.init(r: CGFloat(arc4random_uniform(255)), g: CGFloat(arc4random_uniform(255)), b: CGFloat(arc4random_uniform(255)))
+        }
+        
+        let view = ContentScrollView.init(frame: frame, childVcs: childVcs, parentController: self)
+        return view
+    }()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         setUpUI()
@@ -36,6 +52,8 @@ extension HomeViewController {
     private func setUpUI() {
         setUpNavBar()
         self.view.addSubview(pageTitleView)
+        self.view.addSubview(pageContentView)
+        pageContentView.backgroundColor = UIColor.purple
     }
     
 //    设置导航
