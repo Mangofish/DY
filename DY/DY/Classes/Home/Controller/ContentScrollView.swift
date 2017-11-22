@@ -14,12 +14,12 @@ class ContentScrollView: UIView ,UICollectionViewDataSource{
 
 //    定义属性
     private var childVCs : [UIViewController]
-    private var parentVC : UIViewController
+    private weak var parentVC : UIViewController?
     
-    lazy weak var collectionView : UICollectionView? = {
+    lazy var collectionView : UICollectionView = {
 //        1.创建layout
         let layout = UICollectionViewFlowLayout.init()
-        layout.itemSize = self.bounds.size
+        layout.itemSize = (self.bounds.size)
         layout.minimumLineSpacing = 0
         layout.minimumInteritemSpacing = 0
         layout.scrollDirection = .horizontal
@@ -62,11 +62,11 @@ extension ContentScrollView{
     private func setUpUI(){
 //        子控制器添加到父控制器
         for child in childVCs {
-            parentVC.addChildViewController(child)
+            parentVC?.addChildViewController(child)
         }
         
-        self.addSubview(collectionView!)
-        collectionView?.frame = bounds
+        self.addSubview(collectionView)
+        collectionView.frame = bounds
         
     }
     
