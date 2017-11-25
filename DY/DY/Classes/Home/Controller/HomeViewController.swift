@@ -10,8 +10,8 @@ import UIKit
 
 private let kTitleViewH : CGFloat = 40
 
-class HomeViewController: UIViewController {
-
+class HomeViewController: UIViewController , PageTitleViewDelegate,ContentScrollViewDelegate {
+    
 //    闭包懒加载
     lazy var pageTitleView : PageTitleView = {
         
@@ -27,7 +27,9 @@ class HomeViewController: UIViewController {
         let frame = CGRect.init(x: 0, y: kNavHeight+40+kItemBarHeight, width: kScreenWidth, height: kScreenHeight-kNavHeight-44-kTitleViewH-kItemBarHeight)
 //        四个控制器
         var childVcs :[UIViewController] = []
-        for _ in 0..<4{
+        childVcs.append(CommandViewController())
+        
+        for _ in 0..<3{
             let vc = UIViewController.init()
             childVcs.append(vc)
 //            没有隐式转换
@@ -53,7 +55,8 @@ extension HomeViewController {
         setUpNavBar()
         self.view.addSubview(pageTitleView)
         self.view.addSubview(pageContentView)
-        pageContentView.backgroundColor = UIColor.purple
+        pageTitleView.delegate = self
+        pageContentView.contentDelegate = self
     }
     
 //    设置导航
@@ -76,4 +79,17 @@ extension HomeViewController {
         
     }
     
+//    代理
+    func pageTiltleDidSelected(titleView: PageTitleView, selectedIndex index: Int) {
+        pageContentView.setCurrentContentViewIndex(currentIndex: index)  
+    }
+    
+//    刷新
+    func contenViewDidScrollToIndex(index: Int) {
+        pageTitleView.setCurrentPageViewIndex(currentNewIndex: index)
+    }
+    
 }
+
+
+

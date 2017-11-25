@@ -24,6 +24,7 @@
 		187AF0611FC004DB003825BB /* UIBarButtonItem-Extention.swift in Sources */ = {isa = PBXBuildFile; fileRef = 187AF0601FC004DB003825BB /* UIBarButtonItem-Extention.swift */; };
 		187AF0631FC012E8003825BB /* PageTitleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 187AF0621FC012E8003825BB /* PageTitleView.swift */; };
 		187AF0651FC0153A003825BB /* Common.swift in Sources */ = {isa = PBXBuildFile; fileRef = 187AF0641FC0153A003825BB /* Common.swift */; };
+		18A470631FC7FD7900E33992 /* CommandViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18A470621FC7FD7900E33992 /* CommandViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -67,6 +68,7 @@
 		187AF0601FC004DB003825BB /* UIBarButtonItem-Extention.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIBarButtonItem-Extention.swift"; sourceTree = "<group>"; };
 		187AF0621FC012E8003825BB /* PageTitleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PageTitleView.swift; sourceTree = "<group>"; };
 		187AF0641FC0153A003825BB /* Common.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Common.swift; sourceTree = "<group>"; };
+		18A470621FC7FD7900E33992 /* CommandViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommandViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -216,6 +218,7 @@
 				185840991FC2CB98005CC252 /* ContentScrollView.swift */,
 				187AF05D1FBFE591003825BB /* HomeViewController.swift */,
 				187AF0531FBFDC2D003825BB /* Home.storyboard */,
+				18A470621FC7FD7900E33992 /* CommandViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -412,6 +415,7 @@
 				187AF0651FC0153A003825BB /* Common.swift in Sources */,
 				1858409A1FC2CB98005CC252 /* ContentScrollView.swift in Sources */,
 				187AF0611FC004DB003825BB /* UIBarButtonItem-Extention.swift in Sources */,
+				18A470631FC7FD7900E33992 /* CommandViewController.swift in Sources */,
 				185D39171FC3F4B500132B33 /* UIColor+Extension.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

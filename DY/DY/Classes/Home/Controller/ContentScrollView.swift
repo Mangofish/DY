@@ -10,11 +10,18 @@ import UIKit
 
 private let contentCellID = "contentCellID"
 
-class ContentScrollView: UIView ,UICollectionViewDataSource{
+protocol ContentScrollViewDelegate : class {
+    func contenViewDidScrollToIndex(index : Int)
+}
+
+class ContentScrollView: UIView ,UICollectionViewDataSource,UICollectionViewDelegate {
 
 //    定义属性
     private var childVCs : [UIViewController]
     private weak var parentVC : UIViewController?
+    private var startContentOffsetX : CGFloat = 0
+    
+   weak var contentDelegate : ContentScrollViewDelegate?
     
     lazy var collectionView : UICollectionView = {
 //        1.创建layout
@@ -31,7 +38,7 @@ class ContentScrollView: UIView ,UICollectionViewDataSource{
         collectionview.dataSource = self
         collectionview.showsVerticalScrollIndicator = false
         collectionview.showsHorizontalScrollIndicator = false
-//        collectionview.delegate = self
+        collectionview.delegate = self
 //        .self拿到类型
         collectionview.register(UICollectionViewCell.self, forCellWithReuseIdentifier: contentCellID)
         return collectionview
@@ -72,7 +79,7 @@ extension ContentScrollView{
     
 }
 
-extension ContentScrollView{
+extension ContentScrollView {
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return childVCs.count
@@ -93,4 +100,22 @@ extension ContentScrollView{
         return cell
     }
     
+//    滑动方法
+    func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
+        
+        let newIndex = Int(scrollView.contentOffset.x/scrollView.bounds.width)
+//        通知刷新
+        self.contentDelegate?.contenViewDidScrollToIndex(index: newIndex)
+        
+    }
+   
+    
+}
+
+//对外方法
+extension  ContentScrollView {
+    func setCurrentContentViewIndex(currentIndex : Int) -> Void {
+        let offsetX = CGFloat(currentIndex) * collectionView.frame.width
+        collectionView.setContentOffset(CGPoint.init(x: offsetX, y: 0), animated: true)
+    }
 }

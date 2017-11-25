@@ -10,7 +10,7 @@ import UIKit
 
 //表示只能被类 class
 protocol PageTitleViewDelegate : class {
-    func pageTiltleDidSelected(titleView : PageTitleView, index selectedIndex : Int) -> Void
+    func pageTiltleDidSelected(titleView : PageTitleView, selectedIndex index : Int) -> Void
 }
 
 let kScrollH : CGFloat = 2
@@ -22,6 +22,9 @@ class PageTitleView: UIView {
     private var labelAry : [UILabel] = []
 //    当前位置
     private var currentIndex : Int = 0
+//    定义代理
+     weak var delegate : PageTitleViewDelegate?
+    
 //  滚动ScrollView
     private var scrollView : UIScrollView = {
         
@@ -129,7 +132,7 @@ extension PageTitleView {
 //手势方法，点击事件
 extension PageTitleView {
    @objc private func titleDidClicked (sender : UIGestureRecognizer) {
-        print("监听")
+//        print("监听")
     if  sender.view?.tag == currentIndex {
         return
     }
@@ -147,7 +150,34 @@ extension PageTitleView {
         self.scrollLine.frame.origin.x = scrollViewX
     }
     
+//    通知代理
+    self.delegate?.pageTiltleDidSelected(titleView: self, selectedIndex: currentIndex)
+    
     }
     
 }
+
+//向外部暴露方法
+extension PageTitleView {
+    
+    func setCurrentPageViewIndex(currentNewIndex : Int) -> Void {
+        
+        let oldLabel = self.labelAry[currentIndex]
+        let newLabel = self.labelAry[currentNewIndex]
+        
+        //    改变颜色
+        oldLabel.textColor = UIColor.darkGray
+        newLabel.textColor = UIColor.orange
+        
+        currentIndex = newLabel.tag
+        //    改变滑动条位置
+        let scrollViewX = CGFloat(newLabel.tag) * scrollLine.frame.width
+        UIView.animate(withDuration: 0.1) {
+            self.scrollLine.frame.origin.x = scrollViewX
+        }
+        
+    }
+    
+}
+
 
