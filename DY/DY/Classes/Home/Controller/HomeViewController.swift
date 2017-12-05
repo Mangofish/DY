@@ -18,7 +18,7 @@ class HomeViewController: UIViewController , PageTitleViewDelegate,ContentScroll
         let frame = CGRect.init(x: 0, y: 64, width: kScreenWidth, height: kTitleViewH)
         let titiles = ["推荐","游戏","娱乐","趣玩"]
         let titleView = PageTitleView.init(frame: frame, titles: titiles)
-        titleView.backgroundColor = UIColor.groupTableViewBackground
+        titleView.backgroundColor = UIColor.white
         return titleView
     }()
     

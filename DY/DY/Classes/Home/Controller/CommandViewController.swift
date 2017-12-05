@@ -11,6 +11,10 @@ import UIKit
 private let kImgMargin : CGFloat = 10
 private let kItemW : CGFloat = (kScreenWidth - 3 * kImgMargin) / 2
 private let kItemH : CGFloat = kItemW * 3 / 4
+private let kItemHeader : CGFloat = 50
+
+private let cellID : String = "NormalCellID"
+private let headerID : String = "headerID"
 
 class CommandViewController: UIViewController ,UICollectionViewDataSource {
 
@@ -19,10 +23,14 @@ class CommandViewController: UIViewController ,UICollectionViewDataSource {
         let layout = UICollectionViewFlowLayout.init()
         layout.itemSize = CGSize.init(width: kItemW, height: kItemH)
         layout.minimumInteritemSpacing = kImgMargin
-        layout.minimumLineSpacing = 0
+        layout.minimumLineSpacing = 10
+        layout.sectionInset = UIEdgeInsetsMake(0, 10, 0, 10)
+        layout.headerReferenceSize = CGSize.init(width: kScreenWidth, height: kItemHeader)
 //        创建UIcollection
-        let collectionView = UICollectionView.init(frame:self.view.bounds, collectionViewLayout: layout)
+        let collectionView = UICollectionView.init(frame:CGRect.init(x: 0, y: 0, width: kScreenWidth, height: kScreenHeight-(kNavHeight+kItemBarHeight+44+44)), collectionViewLayout: layout)
         collectionView.dataSource = self
+        collectionView.backgroundColor = UIColor.white
+        
         return collectionView
         
     }()
@@ -30,6 +38,14 @@ class CommandViewController: UIViewController ,UICollectionViewDataSource {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+//        collectionView.register(UICollectionViewCell.self, forCellWithReuseIdentifier: cellID)
+        
+//
+        
+//        collectionView.register(UICollectionReusableView.self, forSupplementaryViewOfKind: UICollectionElementKindSectionHeader, withReuseIdentifier: headerID)
+        
+        collectionView.register(UINib.init(nibName: "RecommandHeaderCollectionReusableView", bundle: nil), forSupplementaryViewOfKind: UICollectionElementKindSectionHeader, withReuseIdentifier: headerID)
         self.setUpUI()
 
     }
@@ -43,17 +59,37 @@ extension CommandViewController {
         
     }
     
+    func numberOfSections(in collectionView: UICollectionView) -> Int {
+        return 12
+    }
+    
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         
-        return 1
+        if section == 0 {
+            return 8
+        }
+        
+        return 4
         
     }
     
-//    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-//
-//
-//
-//    }
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+
+//        获取cell
+        collectionView.register(UINib.init(nibName: "RecommandBeautyCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: cellID)
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellID, for: indexPath)
+        
+        return cell
+
+    }
+    
+//    头样式
+    func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
+        
+        let headerView = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: headerID, for: indexPath)
+        
+        return headerView
+    }
     
 }
 
