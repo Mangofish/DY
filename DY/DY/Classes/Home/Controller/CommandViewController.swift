@@ -11,12 +11,15 @@ import UIKit
 private let kImgMargin : CGFloat = 10
 private let kItemW : CGFloat = (kScreenWidth - 3 * kImgMargin) / 2
 private let kItemH : CGFloat = kItemW * 3 / 4
+private let kPrettyItemH : CGFloat = kItemW * 4 / 3
+
 private let kItemHeader : CGFloat = 50
 
-private let cellID : String = "NormalCellID"
+private let normalCellID : String = "NormalCellID"
+private let prettyCellID : String = "PrettyCellID"
 private let headerID : String = "headerID"
 
-class CommandViewController: UIViewController ,UICollectionViewDataSource {
+class CommandViewController: UIViewController ,UICollectionViewDataSource,UICollectionViewDelegateFlowLayout {
 
     private lazy var collectionView : UICollectionView = { [unowned self] in
 //            创建布局
@@ -29,6 +32,7 @@ class CommandViewController: UIViewController ,UICollectionViewDataSource {
 //        创建UIcollection
         let collectionView = UICollectionView.init(frame:CGRect.init(x: 0, y: 0, width: kScreenWidth, height: kScreenHeight-(kNavHeight+kItemBarHeight+44+44)), collectionViewLayout: layout)
         collectionView.dataSource = self
+        collectionView.delegate = self
         collectionView.backgroundColor = UIColor.white
         
         return collectionView
@@ -41,7 +45,9 @@ class CommandViewController: UIViewController ,UICollectionViewDataSource {
         
 //        collectionView.register(UICollectionViewCell.self, forCellWithReuseIdentifier: cellID)
         
-//
+        collectionView.register(UINib.init(nibName: "RecommandBeautyCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: normalCellID)
+        collectionView.register(UINib.init(nibName: "PrettyCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: prettyCellID)
+        
         
 //        collectionView.register(UICollectionReusableView.self, forSupplementaryViewOfKind: UICollectionElementKindSectionHeader, withReuseIdentifier: headerID)
         
@@ -74,10 +80,14 @@ extension CommandViewController {
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-
+        let cell : UICollectionViewCell
 //        获取cell
-        collectionView.register(UINib.init(nibName: "RecommandBeautyCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: cellID)
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellID, for: indexPath)
+        if indexPath.section == 1 {
+             cell = collectionView.dequeueReusableCell(withReuseIdentifier: prettyCellID, for: indexPath)
+        }else{
+             cell = collectionView.dequeueReusableCell(withReuseIdentifier: normalCellID, for: indexPath)
+        }
+        
         
         return cell
 
@@ -89,6 +99,14 @@ extension CommandViewController {
         let headerView = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: headerID, for: indexPath)
         
         return headerView
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        if indexPath.section == 1 {
+            return CGSize.init(width: kItemW, height: kPrettyItemH)
+        }
+        
+        return CGSize.init(width: kItemW, height: kItemH)
     }
     
 }
